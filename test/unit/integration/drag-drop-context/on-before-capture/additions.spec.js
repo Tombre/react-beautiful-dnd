@@ -34,7 +34,7 @@ it('should allow for additions to be made', () => {
                 </div>
               )}
             </Draggable>
-            {droppableProvided.placeholder};
+            {<droppableProvided.Placeholder />};
           </div>
         )}
       </Droppable>
@@ -112,7 +112,7 @@ it('should adjust captured values for any changes that impact that dragging item
                   )}
                 </Draggable>
               ))}
-              {droppableProvided.placeholder};
+              {<droppableProvided.Placeholder />};
             </div>
           )}
         </Droppable>

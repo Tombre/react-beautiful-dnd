@@ -51,7 +51,7 @@ export default class TaskList extends Component<Props> {
                     <Task key={task.id} task={task} index={index} />
                   ))}
                 </List>
-                {provided.placeholder}
+                <provided.Placeholder />
               </Container>
             )}
           </BlurContext.Consumer>

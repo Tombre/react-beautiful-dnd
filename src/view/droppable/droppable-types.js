@@ -1,5 +1,5 @@
 // @flow
-import { type Node } from 'react';
+import { type Node, type ComponentType } from 'react';
 import type {
   DraggableId,
   DroppableId,
@@ -23,9 +23,13 @@ export type DroppableProps = {|
   'data-rbd-droppable-id': DroppableId,
 |};
 
+export type PlaceholderProps = {
+  className?: string
+}
+
 export type Provided = {|
   innerRef: (?HTMLElement) => void,
-  placeholder: ?Node,
+  Placeholder: ComponentType<PlaceholderProps>,
   droppableProps: DroppableProps,
 |};
 
@@ -84,6 +88,14 @@ export type Props = {|
   ...MapProps,
   ...DispatchProps,
   ...OwnProps,
+|};
+
+export type DroppablePlaceholderContextProps = {|
+  on: mixed,
+  shouldAnimate: boolean,
+  innerRef?: () => ?HTMLElement,
+  onTransitionEnd: () => void,
+  contextId: ContextId,
 |};
 
 // Having issues getting the correct type

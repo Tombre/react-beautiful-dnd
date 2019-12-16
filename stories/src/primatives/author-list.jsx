@@ -87,7 +87,7 @@ export default class AuthorList extends Component<Props> {
               )}
             </Draggable>
           ))}
-          {dropProvided.placeholder}
+          <dropProvided.Placeholder />
         </DropZone>
       </Container>
     );

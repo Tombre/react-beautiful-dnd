@@ -79,7 +79,7 @@ function QuoteApp() {
         {(provided: DroppableProvided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
             <QuoteList quotes={quotes} />
-            {provided.placeholder}
+            <provided.Placeholder />
           </div>
         )}
       </Droppable>

@@ -169,7 +169,7 @@ class App extends React.Component<*, State> {
               {...droppableProvided.droppableProps}
             >
               <InnerList tasks={this.state.tasks} />
-              {droppableProvided.placeholder}
+              {<droppableProvided.Placeholder />}
             </div>
           )}
         </Droppable>

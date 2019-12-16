@@ -168,7 +168,7 @@ function List(props: ListProps) {
               shouldAllowTrimming={props.width === 'large'}
             />
           ))}
-          {provided.placeholder}
+          <provided.Placeholder />
         </StyledList>
       )}
     </Droppable>

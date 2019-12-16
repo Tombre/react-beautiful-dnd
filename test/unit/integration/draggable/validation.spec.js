@@ -43,7 +43,7 @@ function WithCustomProps(props: Props) {
                 </div>
               )}
             </Draggable>
-            {droppableProvided.placeholder}
+            {<droppableProvided.Placeholder />}
           </div>
         )}
       </Droppable>
@@ -99,7 +99,7 @@ it('should log an error if innerRef is not provided', () => {
                   </div>
                 )}
               </Draggable>
-              {droppableProvided.placeholder}
+              <droppableProvided.Placeholder />
             </div>
           )}
         </Droppable>
@@ -134,7 +134,7 @@ it('should log an error if innerRef is an SVG', () => {
                   </svg>
                 )}
               </Draggable>
-              {droppableProvided.placeholder}
+              {<droppableProvided.Placeholder />}
             </div>
           )}
         </Droppable>
@@ -169,7 +169,7 @@ it('should log an error if no drag handle props are applied', () => {
                   </div>
                 )}
               </Draggable>
-              {droppableProvided.placeholder}
+              {<droppableProvided.Placeholder />}
             </div>
           )}
         </Droppable>
@@ -203,7 +203,7 @@ it('should log an error if the draggable is disabled as there will be no drag ha
                   </div>
                 )}
               </Draggable>
-              {droppableProvided.placeholder}
+              {<droppableProvided.Placeholder />}
             </div>
           )}
         </Droppable>

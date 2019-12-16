@@ -146,7 +146,7 @@ export default class Board extends Component<Props, State> {
                 useClone={useClone}
               />
             ))}
-            {provided.placeholder}
+            <provided.Placeholder />
           </Container>
         )}
       </Droppable>

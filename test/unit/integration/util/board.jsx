@@ -81,7 +81,7 @@ function Column(props: ColumnProps) {
                     index={index}
                   />
                 ))}
-                {droppableProvided.placeholder}
+                {<droppableProvided.Placeholder />}
               </div>
             )}
           </Droppable>
@@ -104,7 +104,7 @@ export default function Board() {
                 index={index}
               />
             ))}
-            {provided.placeholder}
+            <provided.Placeholder />
           </div>
         )}
       </Droppable>

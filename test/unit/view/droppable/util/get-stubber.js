@@ -16,10 +16,11 @@ export default (mock?: Function = () => {}) =>
         provided,
         snapshot,
       });
+
       return (
         <div ref={provided.innerRef} {...provided.droppableProps}>
           Hey there
-          {provided.placeholder}
+          <provided.Placeholder />
         </div>
       );
     }

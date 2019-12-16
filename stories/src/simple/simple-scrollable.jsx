@@ -115,7 +115,7 @@ export default class App extends Component {
                   )}
                 </Draggable>
               ))}
-              {droppableProvided.placeholder}
+              {<droppableProvided.Placeholder />}
             </div>
           )}
         </Droppable>

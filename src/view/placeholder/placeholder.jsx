@@ -33,6 +33,8 @@ export type Props = {|
   innerRef?: () => ?HTMLElement,
   onTransitionEnd: () => void,
   contextId: ContextId,
+  className?: string,
+  children?: Node | null
 |};
 
 type Size = {|
@@ -115,6 +117,7 @@ const getStyle = ({
 };
 
 function Placeholder(props: Props): Node {
+
   const animateOpenTimerRef = useRef<?TimeoutID>(null);
 
   const tryClearAnimateOpenTimer = useCallback(() => {
@@ -185,12 +188,17 @@ function Placeholder(props: Props): Node {
     placeholder: props.placeholder,
   });
 
-  return React.createElement(props.placeholder.tagName, {
-    style,
-    'data-rbd-placeholder-context-id': contextId,
-    onTransitionEnd: onSizeChangeEnd,
-    ref: props.innerRef,
-  });
+  return React.createElement(
+    props.placeholder.tagName, 
+    {
+      style,
+      'data-rbd-placeholder-context-id': contextId,
+      onTransitionEnd: onSizeChangeEnd,
+      ref: props.innerRef,
+      className: props.className
+    },
+    props.children
+  );
 }
 
 export default React.memo<Props>(Placeholder);

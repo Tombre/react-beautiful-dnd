@@ -12,7 +12,7 @@ it('should warn a consumer if they have not provided a ref', () => {
       return (
         <div {...provided.droppableProps}>
           Hello there
-          {provided.placeholder}
+          <provided.Placeholder />
         </div>
       );
     }
@@ -32,7 +32,7 @@ it('should throw a consumer if they have provided an SVGElement', () => {
         // $FlowFixMe - flow is correctly stating this is not a HTMLElement
         <svg {...provided.droppableProps} ref={provided.innerRef}>
           Hello there
-          {provided.placeholder}
+          <provided.Placeholder />
         </svg>
       );
     }

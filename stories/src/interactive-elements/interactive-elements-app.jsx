@@ -230,7 +230,7 @@ export default class InteractiveElementsApp extends React.Component<*, State> {
                     )}
                   </Draggable>
                 ))}
-                {droppableProvided.placeholder}
+                {<droppableProvided.Placeholder />}
               </List>
             )}
           </Droppable>

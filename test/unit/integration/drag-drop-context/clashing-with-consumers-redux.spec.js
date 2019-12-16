@@ -55,7 +55,7 @@ it('should avoid clashes with parent redux applications', () => {
                       </div>
                     )}
                   </Draggable>
-                  {droppableProvided.placeholder}
+                  {<droppableProvided.Placeholder />}
                 </div>
               )}
             </Droppable>
@@ -95,7 +95,7 @@ it('should avoid clashes with child redux applications', () => {
                     </div>
                   )}
                 </Draggable>
-                {droppableProvided.placeholder}
+                {<droppableProvided.Placeholder />}
               </div>
             )}
           </Droppable>

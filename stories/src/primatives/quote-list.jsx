@@ -120,7 +120,7 @@ function InnerList(props: InnerListProps) {
       {title}
       <DropZone ref={dropProvided.innerRef}>
         <InnerQuoteList quotes={quotes} />
-        {dropProvided.placeholder}
+        <dropProvided.Placeholder />
       </DropZone>
     </Container>
   );

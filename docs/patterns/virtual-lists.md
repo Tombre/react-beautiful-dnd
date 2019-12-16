@@ -125,7 +125,7 @@ const Row = ({ data, index, style }: RowProps) => {
 
 function render(provided: DroppableProvided, snapshot: DroppableStateSnapshot) {
   // Add an extra item to our list to make space for a dragging item
-  // Usually the DroppableProvided.placeholder does this, but that won't
+  // Usually the <droppableProvided.Placeholder /> does this, but that won't
   // work in a virtual list
   const itemCount: number = snapshot.isUsingPlaceholder
     ? quotes.length + 1

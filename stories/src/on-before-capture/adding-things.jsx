@@ -141,7 +141,7 @@ export default function AddingThings() {
             {provided => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
                 {renderTasks(tasks)}
-                {provided.placeholder}
+                <provided.Placeholder />
               </div>
             )}
           </Droppable>
@@ -158,7 +158,7 @@ export default function AddingThings() {
               {provided => (
                 <div ref={provided.innerRef} {...provided.droppableProps}>
                   {renderTasks(trash, { isDragEnabled: false })}
-                  {provided.placeholder}
+                  <provided.Placeholder />
                 </div>
               )}
             </Droppable>

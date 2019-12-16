@@ -57,7 +57,7 @@ it('should adjust captured values for any changes that impact that dragging item
                   )}
                 </Draggable>
               ))}
-              {droppableProvided.placeholder};
+              {<droppableProvided.Placeholder />};
             </div>
           )}
         </Droppable>

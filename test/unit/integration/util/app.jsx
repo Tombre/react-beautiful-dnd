@@ -173,7 +173,7 @@ export default function App(props: Props) {
                 {render(item)}
               </Draggable>
             ))}
-            {droppableProvided.placeholder}
+            {<droppableProvided.Placeholder />}
           </div>
         )}
       </Droppable>

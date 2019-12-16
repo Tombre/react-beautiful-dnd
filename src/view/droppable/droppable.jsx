@@ -4,7 +4,7 @@ import { useMemo, useCallback } from 'use-memo-one';
 import React, { useRef, useContext, type Node } from 'react';
 import { invariant } from '../../invariant';
 import type { DraggableId } from '../../types';
-import type { Props, Provided } from './droppable-types';
+import type { Props, Provided, PlaceholderProps, DroppablePlaceholderContextProps } from './droppable-types';
 import useDroppablePublisher from '../use-droppable-publisher';
 import Placeholder from '../placeholder';
 import AppContext, { type AppContextValue } from '../context/app-context';
@@ -22,6 +22,36 @@ import AnimateInOut, {
   type AnimateProvided,
 } from '../animate-in-out/animate-in-out';
 import { PrivateDraggable } from '../draggable/draggable-api';
+
+
+const DroppablePlaceholderContext = React.createContext<DroppablePlaceholderContextProps | null>(null)
+
+const DrappablePlaceholder = (props: PlaceholderProps) => {
+  const contextProps = React.useContext(DroppablePlaceholderContext)
+
+  if (!contextProps) {
+    return null
+  }
+
+  const { on, shouldAnimate, ...restPlaceholderProps  } = contextProps
+  return (
+    <AnimateInOut
+      on={on}
+      shouldAnimate={shouldAnimate}
+    >
+      {({ onClose, data, animate }: AnimateProvided) => (
+          <Placeholder
+            placeholder={(data: any)}
+            onClose={onClose}
+            animate={animate}
+            className={props.className}
+            {...restPlaceholderProps}
+          />
+        )
+      }
+    </AnimateInOut>
+  )
+};
 
 export default function Droppable(props: Props) {
   const appContext: ?AppContextValue = useContext<?AppContextValue>(AppContext);
@@ -89,34 +119,27 @@ export default function Droppable(props: Props) {
     getDroppableRef,
   });
 
-  const placeholder: Node = (
-    <AnimateInOut
-      on={props.placeholder}
-      shouldAnimate={props.shouldAnimatePlaceholder}
-    >
-      {({ onClose, data, animate }: AnimateProvided) => (
-        <Placeholder
-          placeholder={(data: any)}
-          onClose={onClose}
-          innerRef={setPlaceholderRef}
-          animate={animate}
-          contextId={contextId}
-          onTransitionEnd={onPlaceholderTransitionEnd}
-        />
-      )}
-    </AnimateInOut>
-  );
+  const placeholderContextProps = useMemo<DroppablePlaceholderContextProps>(
+    (): DroppablePlaceholderContextProps => ({
+      on: props.placeholder,
+      shouldAnimate: props.shouldAnimatePlaceholder,
+      innerRef: setPlaceholderRef,
+      onTransitionEnd: onPlaceholderTransitionEnd,
+      contextId,
+    }),
+    [props.placeholder, props.shouldAnimatePlaceholder, setPlaceholderRef, onPlaceholderTransitionEnd, contextId]
+  )
 
   const provided: Provided = useMemo(
     (): Provided => ({
       innerRef: setDroppableRef,
-      placeholder,
+      Placeholder: DrappablePlaceholder,
       droppableProps: {
         'data-rbd-droppable-id': droppableId,
         'data-rbd-droppable-context-id': contextId,
       },
     }),
-    [contextId, droppableId, placeholder, setDroppableRef],
+    [contextId, droppableId, DrappablePlaceholder, setDroppableRef],
   );
 
   const isUsingCloneFor: ?DraggableId = useClone
@@ -160,7 +183,9 @@ export default function Droppable(props: Props) {
 
   return (
     <DroppableContext.Provider value={droppableContext}>
-      {children(provided, snapshot)}
+      <DroppablePlaceholderContext.Provider value={placeholderContextProps}>
+        {children(provided, snapshot)}
+      </DroppablePlaceholderContext.Provider>
       {getClone()}
     </DroppableContext.Provider>
   );

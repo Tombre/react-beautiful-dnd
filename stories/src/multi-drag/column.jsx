@@ -94,7 +94,7 @@ export default class Column extends Component<Props> {
                   />
                 );
               })}
-              {provided.placeholder}
+              <provided.Placeholder />
             </TaskList>
           )}
         </Droppable>

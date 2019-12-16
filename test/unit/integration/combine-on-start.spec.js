@@ -95,7 +95,7 @@ class App extends React.Component<*, State> {
                   </div>
                 )}
               </Draggable>
-              {droppableProvided.placeholder}
+              {<droppableProvided.Placeholder />}
             </div>
           )}
         </Droppable>

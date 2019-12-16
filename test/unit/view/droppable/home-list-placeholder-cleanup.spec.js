@@ -27,7 +27,7 @@ it('should not display a placeholder after a flushed drag end in the home list',
   expect(wrapper.find(Placeholder)).toHaveLength(0);
 });
 
-it('should animate a placeholder closed in a home list after a drag', () => {
+it.only('should animate a placeholder closed in a home list after a drag', () => {
   // dropping
   const wrapper: ReactWrapper<*> = mount({
     ownProps: homeOwnProps,

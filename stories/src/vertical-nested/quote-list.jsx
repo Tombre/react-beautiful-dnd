@@ -86,7 +86,7 @@ export default class QuoteList extends Component<{ list: NestedQuoteList }> {
               </Draggable>
             ),
           )}
-          {dropProvided.placeholder}
+          <dropProvided.Placeholder />
         </Container>
       )}
     </Droppable>

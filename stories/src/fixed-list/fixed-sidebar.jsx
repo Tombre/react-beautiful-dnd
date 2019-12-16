@@ -79,7 +79,7 @@ class Sidebar extends React.Component<ListProps> {
                   }}
                 </Draggable>
               ))}
-              {droppableProvided.placeholder}
+              <droppableProvided.Placeholder />
             </div>
           )}
         </Droppable>
@@ -123,7 +123,7 @@ class Content extends React.Component<ListProps> {
                   )}
                 </Draggable>
               ))}
-              {droppableProvided.placeholder}
+              {<droppableProvided.Placeholder />}
             </ContentList>
           )}
         </Droppable>
